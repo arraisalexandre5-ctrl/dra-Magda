@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dra. Magda Odontologia — Blog de Saúde Bucal em Barreiras</title>
+    <link>https://dramagdaodonto.com.br/blog</link>
+    <atom:link href="https://dramagdaodonto.com.br/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>Artigos sobre saúde bucal, extração de siso, clareamento dental e tratamentos odontológicos em Barreiras (BA).</description>
+    <language>pt-BR</language>
+    <lastBuildDate>Fri, 30 Oct 2026 12:00:00 -0300</lastBuildDate>
+    <item>
+      <title>Extração de siso: quando é necessária e como é o procedimento</title>
+      <link>https://dramagdaodonto.com.br/blog/extracao-de-siso-quando-e-necessaria</link>
+      <guid isPermaLink="true">https://dramagdaodonto.com.br/blog/extracao-de-siso-quando-e-necessaria</guid>
+      <description>Entenda quando a extração de siso é indicada, como é a avaliação em Barreiras, o procedimento e os cuidados da recuperação.</description>
+      <pubDate>Fri, 30 Oct 2026 12:00:00 -0300</pubDate>
+      <author>Dra. Magda</author>
+    </item>
+    <item>
+      <title>Clareamento dental: como funciona, quanto dura e quem pode fazer</title>
+      <link>https://dramagdaodonto.com.br/blog/clareamento-dental-como-funciona</link>
+      <guid isPermaLink="true">https://dramagdaodonto.com.br/blog/clareamento-dental-como-funciona</guid>
+      <description>Saiba como funciona o clareamento dental em Barreiras, quem pode fazer, quanto dura e por que a avaliação é indispensável.</description>
+      <pubDate>Fri, 30 Oct 2026 12:00:00 -0300</pubDate>
+      <author>Dra. Magda</author>
+    </item>
+    <item>
+      <title>Bruxismo: sintomas, causas e tratamento</title>
+      <link>https://dramagdaodonto.com.br/blog/bruxismo-sintomas-tratamento</link>
+      <guid isPermaLink="true">https://dramagdaodonto.com.br/blog/bruxismo-sintomas-tratamento</guid>
+      <description>Conheça os sintomas do bruxismo, possíveis causas e opções de tratamento em Barreiras, com avaliação de dentes, músculos e ATM.</description>
+      <pubDate>Fri, 30 Oct 2026 12:00:00 -0300</pubDate>
+      <author>Dra. Magda</author>
+    </item>
+  </channel>
+</rss>

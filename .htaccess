@@ -1,0 +1,97 @@
+# ============================================================
+# .htaccess — Dra. Magda Odontologia
+# Ordem obrigatória das regras:
+#   1) Forçar HTTPS  2) Padronizar sem WWW  3) URL limpa (A+B)
+#   4) Página 404    5) Gzip (mod_deflate)  6) Cache quase zerado
+# ============================================================
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # --------------------------------------------------------
+  # 1) FORÇAR HTTPS — todo http:// vira https:// (301)
+  # --------------------------------------------------------
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+  # --------------------------------------------------------
+  # 2) PADRONIZAR WWW — www passa para o domínio sem www (301)
+  # --------------------------------------------------------
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+  # --------------------------------------------------------
+  # 3) URL LIMPA — as DUAS regras (A e B) são obrigatórias
+  #
+  # Regra A (redirecionamento 301): a URL com .html leva à URL
+  # limpa. Usa THE_REQUEST (pedido original do navegador), então
+  # nunca interfere nas rewrites internas nem no ErrorDocument.
+  # --------------------------------------------------------
+
+  # A.1) /index.html -> / (URL canônica da home)
+  RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+  RewriteRule ^(.*)$ / [R=301,L]
+
+  # A.2) /sobre.html -> /sobre (qualquer outra página)
+  RewriteCond %{THE_REQUEST} \s/+([^\s?]+?)\.html[\s?] [NC]
+  RewriteRule ^(.*)$ /%1 [R=301,L]
+
+  # Regra B (reescrita interna): /sobre recebe o conteúdo de
+  # sobre.html SEM mudar a URL no navegador. O negative lookahead
+  # (?!.*\.html$) impede reprocessamento em laço e preserva o 404
+  # real de páginas inexistentes.
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(?!.*\.html$)(.+)$ /$1.html [L]
+</IfModule>
+
+# --------------------------------------------------------
+# 4) PÁGINA 404 — qualquer URL inexistente mostra /404.html
+#    (com o status HTTP 404, não 200)
+# --------------------------------------------------------
+ErrorDocument 404 /404.html
+
+# --------------------------------------------------------
+# 5) COMPRESSÃO GZIP — mod_deflate para HTML, CSS, JS,
+#    SVG, XML e fontes
+# --------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE image/svg+xml
+  AddOutputFilterByType DEFLATE text/xml
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE application/rss+xml
+  AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE font/woff
+  AddOutputFilterByType DEFLATE font/woff2
+  AddOutputFilterByType DEFLATE application/font-woff
+  AddOutputFilterByType DEFLATE application/font-woff2
+  AddOutputFilterByType DEFLATE font/ttf
+  AddOutputFilterByType DEFLATE font/otf
+  AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+</IfModule>
+
+# --------------------------------------------------------
+# 6) CACHE QUASE ZERADO — o site precisa refletir cada
+#    atualização imediatamente após o deploy.
+#    NÃO usar expires longos (1 semana, 1 mês, 1 ano).
+# --------------------------------------------------------
+<IfModule mod_headers.c>
+
+  # HTML + arquivos de indexação (sitemap, feed, robots):
+  # sempre revalidar — navegador busca versão nova a cada visita
+  <FilesMatch "\.(html|htm|xml|txt)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+
+  # CSS, JS, imagens e fontes: no máximo 1 hora
+  <FilesMatch "\.(css|js|mjs|png|jpe?g|gif|webp|avif|svg|ico|woff2?|ttf|otf|eot)$">
+    Header set Cache-Control "max-age=3600"
+  </FilesMatch>
+
+</IfModule>

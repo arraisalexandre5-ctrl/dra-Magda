@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dramagdaodonto.com.br/sitemap.xml
+
+# Permitir crawlers de IA (importante para visibilidade em buscas com IA em 2026)
+User-agent: GPTBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /

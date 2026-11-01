@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Mapa ilustrativo da localização do consultório da Dra. Magda no centro de Barreiras">
+  <rect width="1200" height="630" fill="#F4F7F9"/>
+  <g stroke="#D7E0E4" stroke-width="14" stroke-linecap="round">
+    <path d="M0 140h1200M0 330h1200M0 520h1200M180 0v630M520 0v630M880 0v630"/>
+  </g>
+  <g stroke="#C3D4DA" stroke-width="6">
+    <path d="M0 240h1200M700 0v630M340 0v630"/>
+  </g>
+  <circle cx="520" cy="330" r="70" fill="#0F4C5C" opacity="0.16"/>
+  <path d="M520 236c-31 0-56 25-56 56 0 42 56 98 56 98s56-56 56-98c0-31-25-56-56-56z" fill="#0F4C5C"/>
+  <circle cx="520" cy="292" r="20" fill="#A8D5BA"/>
+  <text x="620" y="300" font-family="Outfit, Segoe UI, Arial, sans-serif" font-size="34" font-weight="600" fill="#0F4C5C">Dra. Magda Odontologia</text>
+  <text x="620" y="346" font-family="Outfit, Segoe UI, Arial, sans-serif" font-size="24" fill="#4A6058">Centro — Barreiras/BA [MAPA PENDENTE]</text>
+</svg>
